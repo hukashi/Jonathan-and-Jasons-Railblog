@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :posts
   end
   resources :posts
-  get '/login' => 'users#login', as: 'login'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#delete'
 
 
   # Example of regular route:
