@@ -3,4 +3,5 @@
 <% @posts.each do |post| %>
   <%= render post %>
   <%= button_to "Edit Post", edit_user_post_path(@user, post), method: :get %>
+  <%= button_to "Delete Post", user_post_path(@user, post), method: :delete %>
 <% end %>
