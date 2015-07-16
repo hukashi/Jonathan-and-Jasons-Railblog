@@ -18,6 +18,7 @@
       <%=button_to 'Log In', login_path, method: :get %>
       <%=button_to 'Sign Up', new_user_path, method: :get %>
     <% end %>
+    <!-- Nice to see how you handle these links showing up. It's considered an anti-pattern to refer to session[:user_id]. Instead, you should have access to an instance variable that essentially does the same thing. (see note in Application Controller) -->
   </div>
 </header>
 

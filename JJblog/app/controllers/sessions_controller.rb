@@ -12,12 +12,14 @@ class SessionsController < ApplicationController
 
   def delete
     session[:user_id] = nil
+    # I like session.delete(:user_id) because it deletes the key entirely instead of setting it to nil.
     redirect_to root_path
   end
 
-  private
+  # private
 
-  def sessions_params
-  end
+  # def sessions_params
+  # end
 
+  # not necessary
 end

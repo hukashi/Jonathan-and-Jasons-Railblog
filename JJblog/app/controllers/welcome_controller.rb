@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
 
   def index
-    if current_user
+    # if current_user
+    if @current_user
       @user = User.find_by(id: current_user.id)
       @posts = Post.all
     else

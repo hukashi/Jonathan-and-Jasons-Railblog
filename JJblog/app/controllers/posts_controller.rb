@@ -10,12 +10,15 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
     post.user = user
     post.save!
+    # don't forget error handling!
     redirect_to root_path
   end
 
   def index
-    @posts = Post.where(user_id: current_user.id)
+    # @posts = Post.where(user_id: current_user.id)
     @user = User.find_by(id: current_user.id)
+    # use your associations! here and in other actions, I'm only correcting this one.
+    @posts = @user.posts
   end
 
   def edit
@@ -23,12 +26,14 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     # @post.update_attributes(post_params)
     # redirect_to user_posts_path(@user)
+    # remove commented out code :)
   end
 
   def update
     @user = User.find_by(id: current_user.id)
     @post = Post.find_by(id: params[:id])
     @post.update_attributes(post_params)
+    #error handling here too!
     redirect_to user_posts_path(@user)
   end
 
@@ -36,6 +41,7 @@ class PostsController < ApplicationController
   def destroy
     @user = User.find_by(id: current_user.id)
     post = Post.find_by(id: params[:id]).destroy
+    # Check your model to see how to handle this more easily. Glad you thought about taking care of this!!
     redirect_to user_posts_path(@user)
   end
 
