@@ -1,0 +1,24 @@
+<h1>Welcome To Our Blog Page</h1>
+
+<h5>List all the posts here</h5>
+<div>
+  <% if session[:user_id] %>
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <br>
+    <br>
+  <% end %>
+</div>
+<br>
+<%= button_to 'View my posts', user_posts_path(@user), method: :get %>
+<%= button_to 'Create a new post', new_user_post_path(@user), method: :get %>
+  <% else %>
+    <% @posts.each do |post| %>
+    <%= render post %>
+     <br>
+  <br>
+  <% end %>
+
+<% end %>
+
+<!-- The indentation here hurts my head -it seems weird that there's a div that starts on line 4 outside of the conditional but ends on line 11 inside of the conditional. I think I'd move the View/Create buttons into the post partial, then just say if @current_user render @posts. That's all you wold need, Rails would know to use the partial. -->

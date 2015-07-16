@@ -1,0 +1,7 @@
+<h1>Here are the posts for <%= @user.username %></h1>
+
+<% @posts.each do |post| %>
+  <%= render post %>
+  <%= button_to "Edit Post", edit_user_post_path(@user, post), method: :get %>
+  <%= button_to "Delete Post", user_post_path(@user, post), method: :delete %>
+<% end %>
